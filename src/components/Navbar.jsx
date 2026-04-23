@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { config } from '../siteConfig'
 
-const DOT_COLORS = ['#1a5fff', '#aa00ff', '#ff1a1a', '#00d4ff']
+const DOT_COLORS = ['#1a5fff', '#ff1a1a', '#c8c8d8', '#00d4ff']
 
 function MarqueeLights() {
   return (

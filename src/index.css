@@ -5,7 +5,7 @@
   --color-deep-space: #111116;
   --color-panel: #16161e;
   --color-neon-green: #1a5fff;
-  --color-neon-purple: #aa00ff;
+  --color-neon-purple: #c8c8d8;
   --color-neon-red: #ff1a1a;
   --color-neon-blue: #00d4ff;
   --font-orbitron: 'Orbitron', sans-serif;
@@ -18,22 +18,24 @@
     background-color: #0a0a0f;
     background-image:
       /* Dark voids */
-      radial-gradient(ellipse 55% 30% at 22% 38%, rgba(0, 0, 8, 0.85) 0%, rgba(0, 0, 5, 0.22) 60%, transparent 100%),
-      radial-gradient(ellipse 40% 25% at 58% 68%, rgba(0, 0, 8, 0.80) 0%, rgba(0, 0, 5, 0.18) 60%, transparent 100%),
-      /* Cobalt blue glow — upper right, like neon sign spill */
-      radial-gradient(ellipse 48% 40% at 78% 22%, rgba(26, 95, 255, 0.65) 0%, rgba(10, 50, 200, 0.32) 50%, transparent 88%),
-      /* Purple ceiling neon — upper left sweep */
-      radial-gradient(ellipse 55% 45% at 15% 30%, rgba(170, 0, 255, 0.60) 0%, rgba(100, 0, 200, 0.28) 52%, transparent 88%),
-      /* Cyan strip light — lower right */
-      radial-gradient(ellipse 50% 38% at 85% 72%, rgba(0, 212, 255, 0.52) 0%, rgba(0, 130, 220, 0.24) 52%, transparent 88%),
-      /* Deep red glow — lower left, arcade cabinet warmth */
-      radial-gradient(ellipse 45% 55% at 10% 78%, rgba(255, 26, 26, 0.42) 0%, rgba(180, 10, 10, 0.18) 55%, transparent 90%),
-      /* Wide cobalt-purple center fill */
-      radial-gradient(ellipse 72% 52% at 50% 48%, rgba(60, 20, 180, 0.38) 0%, rgba(20, 5, 100, 0.18) 60%, transparent 100%),
-      /* Cyan undertone — bottom edge */
-      radial-gradient(ellipse 80% 30% at 40% 96%, rgba(0, 180, 255, 0.40) 0%, rgba(0, 80, 180, 0.18) 58%, transparent 100%),
-      /* Deep base */
-      radial-gradient(ellipse 100% 100% at 50% 50%, rgba(15, 5, 40, 0.88) 0%, rgba(5, 5, 15, 0.80) 68%, transparent 100%);
+      radial-gradient(ellipse 55% 30% at 22% 38%, rgba(0, 0, 8, 0.88) 0%, rgba(0, 0, 5, 0.22) 60%, transparent 100%),
+      radial-gradient(ellipse 40% 25% at 58% 68%, rgba(0, 0, 8, 0.82) 0%, rgba(0, 0, 5, 0.18) 60%, transparent 100%),
+      /* Cobalt blue — upper right */
+      radial-gradient(ellipse 50% 42% at 80% 20%, rgba(26, 95, 255, 0.68) 0%, rgba(10, 50, 200, 0.34) 50%, transparent 88%),
+      /* Electric blue — upper left */
+      radial-gradient(ellipse 52% 44% at 14% 28%, rgba(0, 140, 255, 0.55) 0%, rgba(0, 80, 200, 0.26) 52%, transparent 88%),
+      /* Red glow — lower left, arcade warmth */
+      radial-gradient(ellipse 50% 58% at 8% 80%, rgba(255, 26, 26, 0.55) 0%, rgba(180, 8, 8, 0.25) 52%, transparent 88%),
+      /* Red-orange ember — lower center */
+      radial-gradient(ellipse 42% 32% at 48% 88%, rgba(220, 30, 10, 0.42) 0%, rgba(160, 10, 5, 0.18) 55%, transparent 90%),
+      /* Silver-white subtle shimmer — center highlight */
+      radial-gradient(ellipse 35% 28% at 55% 38%, rgba(200, 200, 220, 0.18) 0%, rgba(160, 160, 190, 0.06) 55%, transparent 88%),
+      /* Wide blue center fill */
+      radial-gradient(ellipse 72% 52% at 50% 48%, rgba(15, 40, 160, 0.42) 0%, rgba(5, 15, 80, 0.20) 60%, transparent 100%),
+      /* Cyan undertone — right edge */
+      radial-gradient(ellipse 30% 70% at 96% 55%, rgba(0, 180, 255, 0.45) 0%, rgba(0, 80, 200, 0.20) 58%, transparent 100%),
+      /* Deep dark base */
+      radial-gradient(ellipse 100% 100% at 50% 50%, rgba(8, 8, 20, 0.92) 0%, rgba(3, 3, 10, 0.85) 68%, transparent 100%);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: 100%;
@@ -49,13 +51,13 @@
 
 /* Neon text */
 .neon-green  { color: #1a5fff; text-shadow: 0 0 6px #1a5fff, 0 0 14px #1a5fff; }
-.neon-purple { color: #aa00ff; text-shadow: 0 0 6px #aa00ff, 0 0 14px #aa00ff; }
+.neon-purple { color: #c8c8d8; text-shadow: 0 0 6px rgba(200,200,220,0.9), 0 0 14px rgba(200,200,220,0.5); }
 .neon-red    { color: #ff1a1a; text-shadow: 0 0 6px #ff1a1a, 0 0 14px #ff1a1a; }
 .neon-blue   { color: #00d4ff; text-shadow: 0 0 6px #00d4ff, 0 0 14px #00d4ff; }
 
 /* Neon borders */
 .border-neon-green  { border-color: #1a5fff !important; box-shadow: 0 0 8px #1a5fff, inset 0 0 8px rgba(26,95,255,0.08); }
-.border-neon-purple { border-color: #aa00ff !important; box-shadow: 0 0 8px #aa00ff, inset 0 0 8px rgba(170,0,255,0.08); }
+.border-neon-purple { border-color: #c8c8d8 !important; box-shadow: 0 0 8px rgba(200,200,220,0.7), inset 0 0 8px rgba(200,200,220,0.05); }
 .border-neon-red    { border-color: #ff1a1a !important; box-shadow: 0 0 8px #ff1a1a, inset 0 0 8px rgba(255,26,26,0.08); }
 .border-neon-blue   { border-color: #00d4ff !important; box-shadow: 0 0 8px #00d4ff, inset 0 0 8px rgba(0,212,255,0.08); }
 
@@ -133,8 +135,8 @@
 .btn-neon-green:hover { background: rgba(26,95,255,0.15); box-shadow: 0 0 18px #1a5fff; }
 
 .btn-neon-purple {
-  border: 2px solid #bf00ff;
-  color: #bf00ff;
+  border: 2px solid #c8c8d8;
+  color: #c8c8d8;
   background: transparent;
   font-family: 'Press Start 2P', monospace;
   font-size: 0.6rem;
@@ -144,9 +146,9 @@
   transition: background 0.2s, box-shadow 0.2s;
   text-decoration: none;
   display: inline-block;
-  box-shadow: 0 0 8px #bf00ff;
+  box-shadow: 0 0 8px rgba(200,200,220,0.6);
 }
-.btn-neon-purple:hover { background: rgba(191,0,255,0.15); box-shadow: 0 0 18px #bf00ff; }
+.btn-neon-purple:hover { background: rgba(200,200,220,0.12); box-shadow: 0 0 18px rgba(200,200,220,0.8); }
 
 .btn-neon-red {
   border: 2px solid #ff0033;

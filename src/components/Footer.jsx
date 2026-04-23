@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { config } from '../siteConfig'
 
-const DOT_COLORS = ['#00d4ff', '#aa00ff', '#ff1a1a', '#1a5fff']
+const DOT_COLORS = ['#00d4ff', '#c8c8d8', '#ff1a1a', '#1a5fff']
 
 function MarqueeLights() {
   return (
