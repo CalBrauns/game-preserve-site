@@ -1,18 +1,18 @@
 import { motion } from 'framer-motion'
 
 const GALLERY_ITEMS = [
-  { id: 1,  label: 'The Main Floor',         emoji: '🎮', color: '#39ff14',  desc: 'Arcade machines lined wall to wall' },
-  { id: 2,  label: 'Nebula Mocha Bar',        emoji: '☕', color: '#bf00ff',  desc: 'Our signature purple espresso station' },
-  { id: 3,  label: 'Mars Attacks Wall',       emoji: '👽', color: '#ff0033',  desc: 'Giant mural of the Martian ambassador' },
-  { id: 4,  label: 'Japanese Snack Display',  emoji: '🍡', color: '#39ff14',  desc: 'Rows of imported treats from Japan' },
-  { id: 5,  label: 'Neon Sign Row',           emoji: '✨', color: '#00bfff',  desc: 'Custom neon art from local makers' },
-  { id: 6,  label: 'Comic Wall',              emoji: '📚', color: '#bf00ff',  desc: 'Floor-to-ceiling vintage comics' },
-  { id: 7,  label: 'Matcha Boba Station',     emoji: '🥤', color: '#39ff14',  desc: 'Watch your drink get made' },
-  { id: 8,  label: 'Retro Star Wars Corner',  emoji: '🚀', color: '#ff0033',  desc: 'Original trilogy posters and figures' },
-  { id: 9,  label: 'Alien Aquarium',          emoji: '🐟', color: '#00bfff',  desc: 'Glowing jellyfish tank ambiance' },
-  { id: 10, label: 'Outdoor Patio',           emoji: '🌌', color: '#bf00ff',  desc: 'Stargazing tables under the sky' },
-  { id: 11, label: 'Arcade Token Wall',       emoji: '🎰', color: '#ff0033',  desc: 'Vintage tokens from closed arcades' },
-  { id: 12, label: 'The Cosmic Bean Logo',    emoji: '👾', color: '#39ff14',  desc: 'Our hand-painted entrance sign' },
+  { id: 1,  label: 'The Main Floor',          emoji: '🕹️',  color: '#1a5fff', desc: 'Wall-to-wall cabinets — classic arcade at its finest'    },
+  { id: 2,  label: 'Pinball Alley',            emoji: '🎰',  color: '#ff1a1a', desc: 'A full row of restored Williams & Bally machines'          },
+  { id: 3,  label: 'Street Fighter Corner',    emoji: '🥊',  color: '#1a5fff', desc: 'Original SF II cabinet — challenges always welcome'       },
+  { id: 4,  label: 'Mortal Kombat Duo',        emoji: '💀',  color: '#ff1a1a', desc: 'Side-by-side cabs for the ultimate showdown'               },
+  { id: 5,  label: 'The Woodlands Location',   emoji: '🏬',  color: '#00d4ff', desc: '473 Sawdust Rd — our original Spring TX arcade'            },
+  { id: 6,  label: 'NASA / Webster Location',  emoji: '🚀',  color: '#c8c8d8', desc: '20810 Gulf Fwy — serving the Clear Lake area'              },
+  { id: 7,  label: 'Pac-Man & Ms. Pac-Man',    emoji: '👾',  color: '#1a5fff', desc: 'Side by side — the dream setup'                           },
+  { id: 8,  label: 'The Twilight Zone Pinball', emoji: '🌀', color: '#ff1a1a', desc: 'One of the most sought-after machines in the world'        },
+  { id: 9,  label: 'Beat Em Up Row',           emoji: '🐢',  color: '#1a5fff', desc: 'TMNT, X-Men, Simpsons — all set to 4-player co-op'        },
+  { id: 10, label: 'Daytona USA Sit-Down',     emoji: '🏎️', color: '#00d4ff', desc: 'Full cockpit cab — feel the asphalt'                       },
+  { id: 11, label: 'Token Wall',               emoji: '🪙',  color: '#c8c8d8', desc: 'A tribute wall of tokens from arcades past'                },
+  { id: 12, label: 'Party Room',               emoji: '🎉',  color: '#ff1a1a', desc: 'Private room for birthdays & group events'                 },
 ]
 
 export default function Gallery() {
@@ -24,13 +24,13 @@ export default function Gallery() {
         transition={{ duration: 0.5 }}
       >
         <p className="neon-red font-pixel" style={{ fontSize: '0.55rem', letterSpacing: '0.2em', marginBottom: 12 }}>
-          ── VISUAL TRANSMISSIONS ──
+          ── A LOOK INSIDE ──
         </p>
         <h1 className="neon-green" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 900, letterSpacing: '0.06em', marginBottom: 16 }}>
           GALLERY
         </h1>
         <p style={{ color: '#666', fontSize: '0.85rem', marginBottom: 48 }}>
-          A peek inside Cosmic Bean. Photos by our regulars and the Martian crew.
+          A glimpse of the floor, the machines, and the vibe. Best experienced in person.
         </p>
       </motion.div>
 
@@ -72,7 +72,7 @@ export default function Gallery() {
             <motion.span
               style={{ fontSize: '3.5rem' }}
               animate={{ rotate: [0, -5, 5, 0] }}
-              transition={{ duration: 4, repeat: Infinity, repeatDelay: Math.random() * 3 + 1 }}
+              transition={{ duration: 4, repeat: Infinity, repeatDelay: 2 + (i % 3) }}
             >
               {item.emoji}
             </motion.span>
@@ -94,7 +94,7 @@ export default function Gallery() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
       >
-        ★ TAG US @COSMICBEANCOFFEE TO GET FEATURED ★
+        ★ TAG US @GAMEPRESERVEHOUSTON TO GET FEATURED ★
       </motion.p>
     </div>
   )

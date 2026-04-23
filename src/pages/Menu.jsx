@@ -1,36 +1,39 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const CATEGORIES = ['ALL', 'HOT DRINKS', 'COLD DRINKS', 'JAPANESE SNACKS', 'COSMIC SPECIALS']
+const CATEGORIES = ['ALL', 'PINBALL', 'CLASSIC ARCADE', 'FIGHTING', 'RACING', 'BEAT EM UPS']
 
 const ITEMS = [
-  { category: 'HOT DRINKS',      name: 'Alien Green Latte',      desc: 'Ceremonial matcha with oat milk foam art. Straight from the rice fields of Sector 9.',                          price: '$6.50',  icon: '🍵', color: 'neon-green' },
-  { category: 'HOT DRINKS',      name: 'Mars Attack Espresso',   desc: 'Triple shot red-eye with a blood-orange twist. Ack ack ack.',                                                   price: '$5.00',  icon: '☕', color: 'neon-red' },
-  { category: 'HOT DRINKS',      name: 'Nebula Mocha',           desc: 'Dark chocolate espresso with purple galaxy foam. Made with butterfly pea powder.',                              price: '$6.75',  icon: '🌌', color: 'neon-purple' },
-  { category: 'HOT DRINKS',      name: 'Galactic Chai',          desc: 'Spiced masala chai brewed with cardamom, star anise, and interstellar spices.',                                price: '$5.50',  icon: '✨', color: 'neon-blue' },
-  { category: 'HOT DRINKS',      name: 'Stardust Americano',     desc: 'Double espresso over hot water. Classic. Powerful. Like the force.',                                            price: '$4.50',  icon: '⚡', color: 'neon-green' },
-  { category: 'HOT DRINKS',      name: 'Comet Tail Cortado',     desc: 'Equal parts espresso and steamed milk. A smooth streak across your morning.',                                  price: '$5.25',  icon: '☄️', color: 'neon-red' },
-  { category: 'COLD DRINKS',     name: 'Cosmic Freeze',          desc: 'Iced espresso with galaxy swirl syrup and oat milk. Blue and green layers.',                                   price: '$7.00',  icon: '🥤', color: 'neon-blue' },
-  { category: 'COLD DRINKS',     name: 'UFO Blue Lemonade',      desc: 'Electric blue butterfly pea lemonade with lavender syrup and a color-changing trick.',                         price: '$5.75',  icon: '🛸', color: 'neon-blue' },
-  { category: 'COLD DRINKS',     name: 'Zero Gravity Cold Brew', desc: 'Slow-dripped 24-hour cold brew. Smooth, dark, weightless on your tongue.',                                    price: '$6.00',  icon: '🌑', color: 'neon-green' },
-  { category: 'COLD DRINKS',     name: 'Matcha Boba Galaxy',     desc: 'Iced matcha with tapioca pearls, honey, and oat milk. Japanese meets outer space.',                           price: '$7.50',  icon: '🍡', color: 'neon-green' },
-  { category: 'COLD DRINKS',     name: 'Ramune Float',           desc: 'Original ramune soda topped with vanilla soft serve and a cherry.',                                            price: '$6.25',  icon: '🥛', color: 'neon-purple' },
-  { category: 'COLD DRINKS',     name: 'Red Planet Hibiscus',    desc: 'Tart hibiscus iced tea with honey, chili rim, and a lemon wheel.',                                             price: '$5.50',  icon: '🌺', color: 'neon-red' },
-  { category: 'JAPANESE SNACKS', name: 'Pocky Pack',             desc: 'Chocolate or strawberry. The snack that transcends all galaxies.',                                             price: '$3.50',  icon: '🍫', color: 'neon-purple' },
-  { category: 'JAPANESE SNACKS', name: 'Mochi Ice Cream',        desc: 'Strawberry, matcha, or mango. Pick your planet.',                                                              price: '$4.00',  icon: '🍡', color: 'neon-green' },
-  { category: 'JAPANESE SNACKS', name: 'Taiyaki Waffle',         desc: 'Fish-shaped waffle filled with red bean paste or vanilla custard. Served warm.',                              price: '$5.00',  icon: '🐟', color: 'neon-red' },
-  { category: 'JAPANESE SNACKS', name: 'Hi-Chew Assorted',       desc: 'A mystery bag of Hi-Chew flavors. Grape, strawberry, mango, and secret flavors.',                            price: '$2.50',  icon: '🍬', color: 'neon-blue' },
-  { category: 'JAPANESE SNACKS', name: 'Melon Pan',              desc: 'Soft Japanese melon bread with a crisp cookie crust. Baked fresh daily.',                                     price: '$4.25',  icon: '🍞', color: 'neon-green' },
-  { category: 'JAPANESE SNACKS', name: 'Dorayaki',               desc: 'Two fluffy pancakes sandwiching sweet red bean paste. Doraemon approved.',                                    price: '$4.50',  icon: '🥞', color: 'neon-purple' },
-  { category: 'COSMIC SPECIALS', name: 'Alien Affogato',         desc: 'A shot of espresso poured over matcha mochi ice cream. Hot meets cold from two worlds.',                     price: '$8.00',  icon: '👽', color: 'neon-green' },
-  { category: 'COSMIC SPECIALS', name: 'Martian Bowl',           desc: 'Acai base with matcha granola, mochi bites, and fresh fruit. A balanced orbit.',                             price: '$9.50',  icon: '🌿', color: 'neon-red' },
-  { category: 'COSMIC SPECIALS', name: 'The Kessel Run',         desc: "Our fastest drink — cold brew + espresso shot + caramel. Made in 12 parsecs.",                               price: '$8.50',  icon: '🚀', color: 'neon-blue' },
-  { category: 'COSMIC SPECIALS', name: 'Ack Ack Combo',          desc: "Any drink + any Japanese snack. Named after the Martian ambassador's favorite order.",                        price: '$11.00', icon: '🎭', color: 'neon-purple' },
+  { category: 'PINBALL',        name: 'Addams Family',              desc: 'One of the best-selling pinball machines ever made. Gomez, Morticia, and the gang await.',                   icon: '🎰', color: 'neon-blue'   },
+  { category: 'PINBALL',        name: 'Medieval Madness',           desc: 'Destroy castles, battle trolls, and rescue maidens. A beloved Williams classic.',                            icon: '🏰', color: 'neon-red'    },
+  { category: 'PINBALL',        name: 'The Twilight Zone',          desc: 'Pinball goes to another dimension. Features the iconic Power Ball mode.',                                     icon: '🌀', color: 'neon-purple'  },
+  { category: 'PINBALL',        name: 'Indiana Jones',              desc: 'Adventure across three movie themes. Hit the idol to start your quest.',                                       icon: '🎩', color: 'neon-green'   },
+  { category: 'PINBALL',        name: 'Star Trek: TNG',             desc: 'Boldly go where no ball has gone before. Features video mode and multiple hurry-ups.',                        icon: '🚀', color: 'neon-blue'   },
+  { category: 'PINBALL',        name: 'Creature from the Black Lagoon', desc: 'Bally classic with a built-in video screen. Unique gameplay combining two eras.',                        icon: '🐊', color: 'neon-red'    },
+  { category: 'CLASSIC ARCADE', name: 'Pac-Man',                   desc: 'The original dot muncher. Eat pellets, dodge ghosts, become a legend.',                                        icon: '👾', color: 'neon-green'   },
+  { category: 'CLASSIC ARCADE', name: 'Ms. Pac-Man',               desc: 'The beloved sequel — faster, smarter, and with moving fruit.',                                                 icon: '🎀', color: 'neon-red'    },
+  { category: 'CLASSIC ARCADE', name: 'Galaga',                    desc: 'Defend the galaxy from insect invaders. Let them capture your ship for double firepower.',                     icon: '🛸', color: 'neon-blue'   },
+  { category: 'CLASSIC ARCADE', name: 'Donkey Kong',               desc: 'Jump barrels, rescue Pauline. The game that launched Mario.',                                                  icon: '🦍', color: 'neon-red'    },
+  { category: 'CLASSIC ARCADE', name: 'Space Invaders',            desc: 'The game that started it all. Pixelated aliens, one row at a time.',                                           icon: '👽', color: 'neon-green'   },
+  { category: 'CLASSIC ARCADE', name: 'Centipede',                 desc: 'Blast the centipede, dodge the spiders. A true Atari classic.',                                                icon: '🐛', color: 'neon-purple'  },
+  { category: 'CLASSIC ARCADE', name: 'Asteroids',                 desc: 'You and your ship against the universe. Rotate, thrust, fire.',                                                icon: '☄️',  color: 'neon-blue'   },
+  { category: 'CLASSIC ARCADE', name: 'Frogger',                   desc: 'Get your frog safely across the road and river. Harder than it looks.',                                        icon: '🐸', color: 'neon-green'   },
+  { category: 'FIGHTING',       name: 'Street Fighter II',         desc: 'The grandfather of competitive fighting games. Hadouken!',                                                      icon: '🥊', color: 'neon-red'    },
+  { category: 'FIGHTING',       name: 'Mortal Kombat II',          desc: 'Finish him. The most iconic arcade fighter of the 90s.',                                                        icon: '💀', color: 'neon-red'    },
+  { category: 'FIGHTING',       name: 'Tekken 3',                  desc: 'King of Iron Fist Tournament. 3D fighting at its finest.',                                                      icon: '🤜', color: 'neon-blue'   },
+  { category: 'FIGHTING',       name: 'Marvel vs. Capcom 2',       desc: '56 characters, infinite possibilities. Build your dream team.',                                                 icon: '🦸', color: 'neon-purple'  },
+  { category: 'RACING',         name: 'Out Run',                   desc: 'Wind in your hair, Ferrari at full speed. The iconic Sega racer.',                                              icon: '🏎️',  color: 'neon-red'    },
+  { category: 'RACING',         name: 'Daytona USA',               desc: 'Three tracks, three difficulties. One of the greatest arcade racers ever made.',                               icon: '🏁', color: 'neon-blue'   },
+  { category: 'RACING',         name: "Cruis'n USA",               desc: 'Coast to coast across America in this classic N64-era racer.',                                                  icon: '🚗', color: 'neon-green'   },
+  { category: 'BEAT EM UPS',    name: 'Teenage Mutant Ninja Turtles', desc: 'Up to 4 players. Save April, defeat Shredder. Pizza not included.',                                         icon: '🐢', color: 'neon-green'   },
+  { category: 'BEAT EM UPS',    name: 'X-Men',                     desc: '6-player Konami classic. Cyclops, Wolverine, Storm — pick your hero.',                                         icon: '⚡', color: 'neon-blue'   },
+  { category: 'BEAT EM UPS',    name: 'The Simpsons',              desc: 'Homer, Marge, Bart, and Lisa save Maggie. Up to 4 players of pure chaos.',                                     icon: '🍩', color: 'neon-red'    },
+  { category: 'BEAT EM UPS',    name: 'Double Dragon',             desc: "The original beat 'em up. Brothers Billy and Jimmy take on the Black Warriors.",                               icon: '👊', color: 'neon-purple'  },
 ]
 
 const borderMap = { 'neon-green': 'border-neon-green', 'neon-purple': 'border-neon-purple', 'neon-red': 'border-neon-red', 'neon-blue': 'border-neon-blue' }
 
-function MenuItem({ item }) {
+function GameCard({ item }) {
   return (
     <motion.div
       layout
@@ -44,14 +47,9 @@ function MenuItem({ item }) {
     >
       <span style={{ fontSize: '2rem', flexShrink: 0 }}>{item.icon}</span>
       <div style={{ flex: 1 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 6, gap: 8 }}>
-          <h3 className={`font-pixel ${item.color}`} style={{ fontSize: '0.55rem', letterSpacing: '0.08em', lineHeight: 1.5 }}>
-            {item.name}
-          </h3>
-          <span className={`font-pixel ${item.color}`} style={{ fontSize: '0.6rem', whiteSpace: 'nowrap' }}>
-            {item.price}
-          </span>
-        </div>
+        <h3 className={`font-pixel ${item.color}`} style={{ fontSize: '0.55rem', letterSpacing: '0.08em', lineHeight: 1.5, marginBottom: 6 }}>
+          {item.name}
+        </h3>
         <p style={{ color: '#888', fontSize: '0.78rem', lineHeight: 1.6 }}>{item.desc}</p>
       </div>
     </motion.div>
@@ -64,24 +62,18 @@ export default function Menu() {
 
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '60px 24px' }}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <p className="neon-purple font-pixel" style={{ fontSize: '0.55rem', letterSpacing: '0.2em', marginBottom: 12 }}>
-          ── TRANSMISSIONS FROM THE KITCHEN ──
+          ── 125+ GAMES AVAILABLE ──
         </p>
         <h1 className="neon-green" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 900, letterSpacing: '0.06em', marginBottom: 48 }}>
-          THE MENU
+          THE GAMES
         </h1>
       </motion.div>
 
-      {/* Category tabs */}
       <motion.div
         style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 48 }}
-        initial="hidden"
-        animate="show"
+        initial="hidden" animate="show"
         variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07 } } }}
       >
         {CATEGORIES.map(cat => (
@@ -92,15 +84,11 @@ export default function Menu() {
             onClick={() => setActive(cat)}
             className="font-pixel"
             style={{
-              padding: '8px 14px',
-              fontSize: '0.5rem',
-              letterSpacing: '0.08em',
-              cursor: 'pointer',
-              border: '2px solid',
-              background: active === cat ? 'rgba(57,255,20,0.15)' : 'transparent',
-              borderColor: active === cat ? '#39ff14' : '#444',
-              color: active === cat ? '#39ff14' : '#888',
-              boxShadow: active === cat ? '0 0 8px #39ff14' : 'none',
+              padding: '8px 14px', fontSize: '0.5rem', letterSpacing: '0.08em', cursor: 'pointer', border: '2px solid',
+              background:   active === cat ? 'rgba(26,95,255,0.15)' : 'transparent',
+              borderColor:  active === cat ? '#1a5fff' : '#444',
+              color:        active === cat ? '#1a5fff' : '#888',
+              boxShadow:    active === cat ? '0 0 8px #1a5fff' : 'none',
               transition: 'all 0.2s',
             }}
           >
@@ -109,28 +97,24 @@ export default function Menu() {
         ))}
       </motion.div>
 
-      {/* Items — AnimatePresence swaps the grid when category changes */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
-          initial="hidden"
-          animate="show"
+          initial="hidden" animate="show"
           exit={{ opacity: 0, transition: { duration: 0.15 } }}
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07 } } }}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 20 }}
         >
-          {filtered.map(item => <MenuItem key={item.name} item={item} />)}
+          {filtered.map(item => <GameCard key={item.name} item={item} />)}
         </motion.div>
       </AnimatePresence>
 
       <motion.p
         className="font-pixel"
         style={{ fontSize: '0.45rem', color: '#555', marginTop: 48, letterSpacing: '0.1em', textAlign: 'center' }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
       >
-        ★ SEASONAL SPECIALS ROTATE WEEKLY · ASK YOUR SERVER FOR TODAY'S TRANSMISSIONS ★
+        ★ ALL MACHINES SET TO FREE PLAY — NO QUARTERS NEEDED ★
       </motion.p>
     </div>
   )

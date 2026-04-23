@@ -1,230 +1,253 @@
-import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-const QUICK_ITEMS = [
-  { name: 'Alien Green Latte', price: '$6.50', icon: '🍵' },
-  { name: 'Mars Attack Espresso', price: '$5.00', icon: '☕' },
-  { name: 'Cosmic Freeze', price: '$7.00', icon: '🥤' },
-  { name: 'Matcha Boba Galaxy', price: '$7.50', icon: '🍡' },
-  { name: 'Alien Affogato', price: '$8.00', icon: '👽' },
-  { name: 'Ack Ack Combo', price: '$11.00', icon: '🎭' },
+const TIERS = [
+  {
+    icon: '🎮',
+    title: 'DAY PASS',
+    price: '$15',
+    unit: 'per person',
+    color: 'neon-green',
+    border: 'border-neon-green',
+    hex: '#1a5fff',
+    features: [
+      'Unlimited play all day',
+      'All 125+ machines included',
+      'No quarters needed',
+      'Re-entry same day',
+    ],
+    cta: 'BUY AT DOOR',
+    highlight: false,
+  },
+  {
+    icon: '👥',
+    title: 'GROUP RATE',
+    price: '$10',
+    unit: 'per person (15+)',
+    color: 'neon-blue',
+    border: 'border-neon-blue',
+    hex: '#00d4ff',
+    features: [
+      'Groups of 15 or more',
+      'Same unlimited access',
+      'Great for field trips & outings',
+      'Call ahead to reserve',
+    ],
+    cta: 'CALL TO BOOK',
+    highlight: false,
+  },
+  {
+    icon: '⭐',
+    title: 'INDIVIDUAL MEMBERSHIP',
+    price: '$30',
+    unit: 'per month',
+    color: 'neon-red',
+    border: 'border-neon-red',
+    hex: '#ff1a1a',
+    features: [
+      'Unlimited visits all month',
+      'Skip the line entry',
+      '1 guest pass per month',
+      'Member events & discounts',
+    ],
+    cta: 'JOIN NOW',
+    highlight: true,
+  },
+  {
+    icon: '👨‍👩‍👧‍👦',
+    title: 'FAMILY MEMBERSHIP',
+    price: '$60',
+    unit: 'per month',
+    color: 'neon-purple',
+    border: 'border-neon-purple',
+    hex: '#c8c8d8',
+    features: [
+      'Up to 4 family members',
+      'Unlimited visits all month',
+      '2 guest passes per month',
+      'Priority party booking',
+    ],
+    cta: 'JOIN NOW',
+    highlight: false,
+  },
+  {
+    icon: '🎉',
+    title: 'PRIVATE PARTY ROOM',
+    price: '$250',
+    unit: 'for 2 hours',
+    color: 'neon-red',
+    border: 'border-neon-red',
+    hex: '#ff1a1a',
+    features: [
+      '10 guests included',
+      'Private room + full arcade access',
+      'Perfect for birthdays & events',
+      'Add-ons available',
+    ],
+    cta: 'BOOK A PARTY',
+    highlight: false,
+  },
 ]
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.96 },
+  show:   { opacity: 1, y: 0,  scale: 1, transition: { duration: 0.45, ease: 'easeOut' } },
+}
+
 export default function Order() {
-  const [submitted, setSubmitted] = useState(false)
-  const [cart, setCart] = useState([])
-  const [form, setForm] = useState({ name: '', notes: '', pickup: '15' })
-
-  const addToCart = (item) => {
-    setCart(prev => {
-      const existing = prev.find(c => c.name === item.name)
-      if (existing) return prev.map(c => c.name === item.name ? { ...c, qty: c.qty + 1 } : c)
-      return [...prev, { ...item, qty: 1 }]
-    })
-  }
-
-  const removeFromCart = (name) => setCart(prev => prev.filter(c => c.name !== name))
-
-  const total = cart.reduce((sum, item) => {
-    return sum + parseFloat(item.price.replace('$', '')) * item.qty
-  }, 0)
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (cart.length === 0) return
-    setSubmitted(true)
-  }
-
-  if (submitted) {
-    return (
-      <div style={{ maxWidth: 600, margin: '0 auto', padding: '80px 24px', textAlign: 'center' }}>
-        <div style={{ fontSize: '5rem', marginBottom: 24 }}>👽</div>
-        <h2 className="neon-green" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '2rem', fontWeight: 900, marginBottom: 16 }}>
-          ORDER RECEIVED
-        </h2>
-        <p className="font-pixel neon-purple" style={{ fontSize: '0.55rem', letterSpacing: '0.12em', marginBottom: 16 }}>
-          TRANSMISSION CONFIRMED
-        </p>
-        <p style={{ color: '#999', fontSize: '0.85rem', lineHeight: 1.8, marginBottom: 32 }}>
-          The Martian kitchen crew has received your order, {form.name}.<br />
-          Your drinks will be ready in approximately {form.pickup} minutes.<br />
-          Ack ack ack — that means thank you!
-        </p>
-        <button className="btn-neon-green" onClick={() => { setSubmitted(false); setCart([]); }}>
-          NEW ORDER
-        </button>
-      </div>
-    )
-  }
-
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '60px 24px' }}>
-      <p className="neon-red font-pixel" style={{ fontSize: '0.55rem', letterSpacing: '0.2em', marginBottom: 12 }}>
-        ── BEAM YOUR ORDER TO THE KITCHEN ──
-      </p>
-      <h1
-        className="neon-green"
-        style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 900, letterSpacing: '0.06em', marginBottom: 48 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        ORDER
-      </h1>
+        <p className="neon-red font-pixel" style={{ fontSize: '0.55rem', letterSpacing: '0.2em', marginBottom: 12 }}>
+          ── INSERT COIN TO CONTINUE ──
+        </p>
+        <h1
+          className="neon-green"
+          style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 900, letterSpacing: '0.06em', marginBottom: 16 }}
+        >
+          PRICING
+        </h1>
+        <p style={{ color: '#777', fontSize: '0.85rem', marginBottom: 52, maxWidth: 500 }}>
+          One flat fee. Every machine on free play. No quarters, no tokens — just pure arcade action all day long.
+        </p>
+      </motion.div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 32 }}>
-
-        {/* Quick picks */}
-        <div>
-          <p className="neon-purple font-pixel" style={{ fontSize: '0.55rem', letterSpacing: '0.12em', marginBottom: 20 }}>
-            QUICK PICKS
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12 }}>
-            {QUICK_ITEMS.map(item => (
-              <button
-                key={item.name}
-                onClick={() => addToCart(item)}
-                className="comic-card border-neon-green"
+      <motion.div
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))', gap: 24 }}
+        initial="hidden"
+        animate="show"
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+      >
+        {TIERS.map(tier => (
+          <motion.div
+            key={tier.title}
+            variants={cardVariants}
+            whileHover={{ y: -6, transition: { duration: 0.2 } }}
+            className={`comic-card ${tier.border}`}
+            style={{
+              padding: '28px 24px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 20,
+              position: 'relative',
+              background: tier.highlight
+                ? `linear-gradient(145deg, rgba(255,26,26,0.08) 0%, rgba(8,2,30,0.9) 100%)`
+                : 'rgba(8,2,30,0.82)',
+            }}
+          >
+            {tier.highlight && (
+              <span
+                className="font-pixel"
                 style={{
-                  padding: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 12,
-                  background: 'none',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                  width: '100%',
-                  transition: 'background 0.2s',
+                  position: 'absolute',
+                  top: -12,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  background: '#ff1a1a',
+                  color: '#fff',
+                  fontSize: '0.38rem',
+                  letterSpacing: '0.12em',
+                  padding: '4px 12px',
+                  whiteSpace: 'nowrap',
+                  boxShadow: '0 0 14px #ff1a1a',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(57,255,20,0.08)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'none'}
               >
-                <span style={{ fontSize: '1.5rem' }}>{item.icon}</span>
-                <div>
-                  <p style={{ color: '#ccc', fontSize: '0.75rem', marginBottom: 2 }}>{item.name}</p>
-                  <p className="neon-green" style={{ fontSize: '0.8rem', fontWeight: 700 }}>{item.price}</p>
-                </div>
-              </button>
-            ))}
-          </div>
-          <p style={{ marginTop: 12, color: '#666', fontSize: '0.75rem' }}>
-            Want the full menu?{' '}
-            <Link to="/menu" style={{ color: '#bf00ff' }}>Browse all items →</Link>
-          </p>
-        </div>
+                MOST POPULAR
+              </span>
+            )}
 
-        {/* Cart + form */}
-        <div className="comic-card border-neon-purple" style={{ padding: '28px' }}>
-          <p className="neon-purple font-pixel" style={{ fontSize: '0.55rem', letterSpacing: '0.12em', marginBottom: 20 }}>
-            YOUR CART
-          </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <span style={{ fontSize: '2rem' }}>{tier.icon}</span>
+              <p className={`font-pixel ${tier.color}`} style={{ fontSize: '0.5rem', letterSpacing: '0.1em', lineHeight: 1.6 }}>
+                {tier.title}
+              </p>
+            </div>
 
-          {cart.length === 0 ? (
-            <p style={{ color: '#555', fontSize: '0.8rem', marginBottom: 24 }}>No items yet — add something above 👆</p>
-          ) : (
-            <div style={{ marginBottom: 24 }}>
-              {cart.map(item => (
-                <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                  <span style={{ color: '#ccc', fontSize: '0.8rem' }}>
-                    {item.icon} {item.name} × {item.qty}
-                  </span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <span className="neon-green" style={{ fontSize: '0.8rem' }}>
-                      ${(parseFloat(item.price.replace('$', '')) * item.qty).toFixed(2)}
-                    </span>
-                    <button onClick={() => removeFromCart(item.name)} style={{ background: 'none', border: 'none', color: '#ff0033', cursor: 'pointer', fontSize: '0.9rem' }}>✕</button>
-                  </div>
-                </div>
+            <div>
+              <span
+                className={tier.color}
+                style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '2.4rem', fontWeight: 900 }}
+              >
+                {tier.price}
+              </span>
+              <span style={{ color: '#666', fontSize: '0.78rem', marginLeft: 8 }}>{tier.unit}</span>
+            </div>
+
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
+              {tier.features.map(f => (
+                <li key={f} style={{ color: '#bbb', fontSize: '0.8rem', display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                  <span style={{ color: tier.hex, flexShrink: 0 }}>▸</span>
+                  {f}
+                </li>
               ))}
-              <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 12 }}>
-                <span className="font-pixel" style={{ fontSize: '0.55rem', color: '#888' }}>TOTAL</span>
-                <span className="neon-green font-pixel" style={{ fontSize: '0.65rem' }}>${total.toFixed(2)}</span>
-              </div>
-            </div>
-          )}
+            </ul>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div>
-              <label className="font-pixel" style={{ fontSize: '0.5rem', color: '#888', display: 'block', marginBottom: 8, letterSpacing: '0.1em' }}>
-                YOUR NAME
-              </label>
-              <input
-                type="text"
-                required
-                value={form.name}
-                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                placeholder="Commander ..."
-                style={{
-                  width: '100%',
-                  background: '#0a0a1a',
-                  border: '1px solid #39ff14',
-                  color: '#e0e0e0',
-                  padding: '10px 14px',
-                  fontSize: '0.85rem',
-                  outline: 'none',
-                  fontFamily: 'Orbitron, sans-serif',
-                  boxShadow: '0 0 6px rgba(57,255,20,0.2)',
-                }}
-              />
-            </div>
-
-            <div>
-              <label className="font-pixel" style={{ fontSize: '0.5rem', color: '#888', display: 'block', marginBottom: 8, letterSpacing: '0.1em' }}>
-                PICKUP TIME
-              </label>
-              <select
-                value={form.pickup}
-                onChange={e => setForm(f => ({ ...f, pickup: e.target.value }))}
-                style={{
-                  background: '#0a0a1a',
-                  border: '1px solid #39ff14',
-                  color: '#e0e0e0',
-                  padding: '10px 14px',
-                  fontSize: '0.85rem',
-                  outline: 'none',
-                  fontFamily: 'Orbitron, sans-serif',
-                  cursor: 'pointer',
-                  minWidth: 180,
-                }}
-              >
-                <option value="10">~10 minutes</option>
-                <option value="15">~15 minutes</option>
-                <option value="20">~20 minutes</option>
-                <option value="30">~30 minutes</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="font-pixel" style={{ fontSize: '0.5rem', color: '#888', display: 'block', marginBottom: 8, letterSpacing: '0.1em' }}>
-                SPECIAL INSTRUCTIONS (OPTIONAL)
-              </label>
-              <textarea
-                value={form.notes}
-                onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
-                rows={3}
-                placeholder="Oat milk, extra hot, beam directly to table 7..."
-                style={{
-                  width: '100%',
-                  background: '#0a0a1a',
-                  border: '1px solid rgba(57,255,20,0.4)',
-                  color: '#e0e0e0',
-                  padding: '10px 14px',
-                  fontSize: '0.85rem',
-                  outline: 'none',
-                  fontFamily: 'Orbitron, sans-serif',
-                  resize: 'vertical',
-                }}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="btn-neon-green"
-              style={{ alignSelf: 'flex-start', opacity: cart.length === 0 ? 0.4 : 1 }}
-              disabled={cart.length === 0}
+            <Link
+              to="/location"
+              className={`btn-${tier.color.replace('neon-', 'neon-')}`}
+              style={{
+                display: 'block',
+                textAlign: 'center',
+                textDecoration: 'none',
+                border: `2px solid ${tier.hex}`,
+                color: tier.hex,
+                background: 'transparent',
+                fontFamily: "'Press Start 2P', monospace",
+                fontSize: '0.5rem',
+                letterSpacing: '0.1em',
+                padding: '0.75rem 1rem',
+                cursor: 'pointer',
+                boxShadow: `0 0 8px ${tier.hex}`,
+                transition: 'background 0.2s, box-shadow 0.2s',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = `${tier.hex}22`
+                e.currentTarget.style.boxShadow = `0 0 18px ${tier.hex}`
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'transparent'
+                e.currentTarget.style.boxShadow = `0 0 8px ${tier.hex}`
+              }}
             >
-              BEAM ORDER 🚀
-            </button>
-          </form>
+              {tier.cta}
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <motion.div
+        className="comic-card border-neon-blue"
+        style={{ padding: '24px 28px', marginTop: 48, display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap' }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      >
+        <span style={{ fontSize: '2rem' }}>📞</span>
+        <div style={{ flex: 1 }}>
+          <p className="neon-blue font-pixel" style={{ fontSize: '0.55rem', marginBottom: 8, letterSpacing: '0.1em' }}>QUESTIONS ABOUT PRICING?</p>
+          <p style={{ color: '#999', fontSize: '0.8rem', lineHeight: 1.7 }}>
+            Group bookings, party packages, and membership sign-ups can be arranged by calling your nearest location.
+            Walk-ins welcome — day passes sold at the door.
+          </p>
         </div>
-      </div>
+        <Link to="/location" className="btn-neon-blue" style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}>
+          FIND LOCATION
+        </Link>
+      </motion.div>
+
+      <motion.p
+        className="font-pixel"
+        style={{ fontSize: '0.45rem', color: '#555', marginTop: 48, letterSpacing: '0.1em', textAlign: 'center' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7 }}
+      >
+        ★ ALL MACHINES SET TO FREE PLAY — NO QUARTERS NEEDED ★
+      </motion.p>
     </div>
   )
 }

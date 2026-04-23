@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const REVIEWS = [
-  { id: 1, name: 'Zara K.',       avatar: '👩‍🚀', stars: 5, date: 'April 2025',    text: 'The Alien Green Latte literally changed my life. The matcha is so smooth and the foam art was a tiny UFO. I come here every morning before work now.',                                                                               tag: 'HOT DRINKS',      color: '#39ff14' },
-  { id: 2, name: 'Aku from Mars', avatar: '👽',   stars: 5, date: 'March 2025',    text: 'ACK ACK ACK. Translation: best coffee on this planet or any other. The Mars Attack Espresso is named after me and it shows. Ack.',                                                                                                     tag: 'COSMIC SPECIALS', color: '#ff0033' },
-  { id: 3, name: 'Trevor M.',     avatar: '🧑‍💻', stars: 5, date: 'April 2025',    text: 'Spent four hours here playing Galaga and drinking cold brew. Nobody bothered me. Perfect vibes, neon lights everywhere, absolutely my new office.',                                                                                    tag: 'ARCADE',          color: '#bf00ff' },
-  { id: 4, name: 'Yuki T.',       avatar: '👩',   stars: 5, date: 'February 2025', text: 'The Japanese snack selection is unreal. I found Melon Pan and Dorayaki in the same place in Houston. The Matcha Boba is as good as anything in Tokyo.',                                                                                tag: 'JAPANESE SNACKS', color: '#00bfff' },
-  { id: 5, name: 'Marcus D.',     avatar: '🧔',   stars: 4, date: 'April 2025',    text: "The Kessel Run cold brew is dangerously strong. I ran a 5k after drinking one. Four stars only because I now can't stop coming back and my wallet is hurting.",                                                                        tag: 'COLD DRINKS',     color: '#39ff14' },
-  { id: 6, name: 'Priya S.',      avatar: '👩‍🎨', stars: 5, date: 'March 2025',    text: "The comic wall alone is worth the trip. Whoever designed this place is a genius. The Alien Affogato — espresso poured over mochi — is the best dessert drink I've ever had.",                                                         tag: 'COSMIC SPECIALS', color: '#bf00ff' },
-  { id: 7, name: 'Dad (Bert)',    avatar: '👴',   stars: 5, date: 'January 2025',  text: "My granddaughter brought me here. I don't understand half the decorations but the coffee is the best I've had in 40 years. Also there was a very friendly green alien painted on the wall.",                                          tag: 'ATMOSPHERE',      color: '#ff0033' },
-  { id: 8, name: 'Space_Cadet99', avatar: '🧑‍🚀', stars: 5, date: 'April 2025',    text: 'The UFO Blue Lemonade changes color when you add ice. I showed everyone at the table and we all got one. Cannot overstate how fun this place is.',                                                                                     tag: 'COLD DRINKS',     color: '#00bfff' },
+  { id: 1, name: 'Derek H.',      avatar: '🕹️', stars: 5, date: 'March 2025',    text: 'Took my kids for the first time and we stayed for five hours. Every machine was working and set to free play — no nickeling and diming. This is how an arcade should be run.', tag: 'FAMILY',      color: '#1a5fff' },
+  { id: 2, name: 'Crystal R.',    avatar: '👩', stars: 5, date: 'April 2025',    text: "I grew up playing Addams Family pinball at my local arcade in the 90s. Finding it here, fully restored, nearly brought tears to my eyes. Worth the drive from Katy.",           tag: 'PINBALL',     color: '#ff1a1a' },
+  { id: 3, name: 'Marco V.',      avatar: '🧔', stars: 5, date: 'February 2025', text: 'Street Fighter II, Mortal Kombat II, and Marvel vs. Capcom 2 all in one building. We had a 20-person tournament going. The staff loved it. 10/10 no notes.',                     tag: 'FIGHTING',    color: '#1a5fff' },
+  { id: 4, name: 'Lauren B.',     avatar: '👩‍🎨', stars: 5, date: 'April 2025',  text: 'Came for a birthday party and booked the private room. Everything was smooth — the staff set it up perfectly. Best birthday party I've thrown in years.',                          tag: 'PARTIES',     color: '#ff1a1a' },
+  { id: 5, name: 'Kevin T.',      avatar: '🧑‍💻', stars: 5, date: 'March 2025',  text: 'The monthly membership pays for itself in two visits. No waiting on machines, no broken cabinets, no skimping. Clean floor, great selection, real nostalgia.',                    tag: 'MEMBERSHIP',  color: '#00d4ff' },
+  { id: 6, name: 'Simone W.',     avatar: '👧', stars: 5, date: 'January 2025',  text: 'I've been to both the Woodlands and Webster locations. Both are awesome — the Webster one has slightly more racing cabs which I love. Daytona USA alone justifies the day pass.',    tag: 'RACING',      color: '#c8c8d8' },
+  { id: 7, name: 'James O.',      avatar: '👴', stars: 5, date: 'April 2025',    text: 'My son brought me here "just to look around." Four hours later I finally put down the Pac-Man joystick. Haven't had that much fun in decades. Now I'm the one dragging him back.', tag: 'CLASSIC',     color: '#1a5fff' },
+  { id: 8, name: 'Ashley C.',     avatar: '👩‍👧', stars: 5, date: 'March 2025',  text: 'Brought a group of 18 for a work outing. The group rate was perfect and everyone had an absolute blast. Nobody wanted to leave. Already planning the next one.',                  tag: 'GROUPS',      color: '#ff1a1a' },
 ]
 
 function Stars({ count }) {
@@ -77,7 +77,7 @@ export default function Reviews() {
         transition={{ duration: 0.5 }}
       >
         <p className="neon-blue font-pixel" style={{ fontSize: '0.55rem', letterSpacing: '0.2em', marginBottom: 12 }}>
-          ── SIGNALS FROM ACROSS THE GALAXY ──
+          ── WHAT PLAYERS ARE SAYING ──
         </p>
         <h1 className="neon-green" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 900, letterSpacing: '0.06em', marginBottom: 24 }}>
           REVIEWS
@@ -99,8 +99,8 @@ export default function Reviews() {
           <Stars count={5} />
         </div>
         <div>
-          <p style={{ color: '#ccc', fontSize: '0.85rem', marginBottom: 4 }}>{REVIEWS.length} reviews from verified earthlings</p>
-          <p className="font-pixel" style={{ fontSize: '0.45rem', color: '#666', letterSpacing: '0.1em' }}>AND AT LEAST ONE MARTIAN</p>
+          <p style={{ color: '#ccc', fontSize: '0.85rem', marginBottom: 4 }}>{REVIEWS.length} reviews from verified players</p>
+          <p className="font-pixel" style={{ fontSize: '0.45rem', color: '#666', letterSpacing: '0.1em' }}>ACROSS BOTH LOCATIONS</p>
         </div>
       </motion.div>
 
@@ -126,7 +126,7 @@ export default function Reviews() {
         transition={{ duration: 0.5 }}
       >
         <p className="neon-purple font-pixel" style={{ fontSize: '0.6rem', letterSpacing: '0.12em', marginBottom: 24 }}>
-          LEAVE A TRANSMISSION
+          LEAVE A REVIEW
         </p>
 
         <AnimatePresence mode="wait">
@@ -139,9 +139,9 @@ export default function Reviews() {
               transition={{ duration: 0.4 }}
               style={{ textAlign: 'center', padding: '20px 0' }}
             >
-              <span style={{ fontSize: '3rem' }}>📡</span>
+              <span style={{ fontSize: '3rem' }}>🏆</span>
               <p className="neon-green font-pixel" style={{ fontSize: '0.55rem', marginTop: 16 }}>REVIEW RECEIVED!</p>
-              <p style={{ color: '#888', fontSize: '0.8rem', marginTop: 8 }}>Thanks for transmitting your thoughts, {form.name}.</p>
+              <p style={{ color: '#888', fontSize: '0.8rem', marginTop: 8 }}>Thanks for the feedback, {form.name}!</p>
               <button className="btn-neon-purple" style={{ marginTop: 20 }} onClick={() => setSubmitted(false)}>
                 WRITE ANOTHER
               </button>
@@ -157,8 +157,13 @@ export default function Reviews() {
             >
               <div>
                 <label className="font-pixel" style={{ fontSize: '0.48rem', color: '#888', display: 'block', marginBottom: 8, letterSpacing: '0.1em' }}>YOUR NAME</label>
-                <input type="text" required value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="Explorer ..."
-                  style={{ width: '100%', background: '#0a0a1a', border: '1px solid #bf00ff', color: '#e0e0e0', padding: '10px 14px', fontSize: '0.85rem', outline: 'none', fontFamily: 'Orbitron, sans-serif', boxShadow: '0 0 6px rgba(191,0,255,0.2)' }}
+                <input
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                  placeholder="Player one..."
+                  style={{ width: '100%', background: '#0a0a1a', border: '1px solid #c8c8d8', color: '#e0e0e0', padding: '10px 14px', fontSize: '0.85rem', outline: 'none', fontFamily: 'Orbitron, sans-serif', boxShadow: '0 0 6px rgba(200,200,220,0.2)' }}
                 />
               </div>
 
@@ -176,13 +181,18 @@ export default function Reviews() {
 
               <div>
                 <label className="font-pixel" style={{ fontSize: '0.48rem', color: '#888', display: 'block', marginBottom: 8, letterSpacing: '0.1em' }}>YOUR REVIEW</label>
-                <textarea required value={form.text} onChange={e => setForm(f => ({ ...f, text: e.target.value }))} rows={4} placeholder="Tell the galaxy what you thought..."
-                  style={{ width: '100%', background: '#0a0a1a', border: '1px solid rgba(191,0,255,0.4)', color: '#e0e0e0', padding: '10px 14px', fontSize: '0.85rem', outline: 'none', fontFamily: 'Orbitron, sans-serif', resize: 'vertical' }}
+                <textarea
+                  required
+                  value={form.text}
+                  onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
+                  rows={4}
+                  placeholder="Tell us what you played, what you thought..."
+                  style={{ width: '100%', background: '#0a0a1a', border: '1px solid rgba(200,200,220,0.4)', color: '#e0e0e0', padding: '10px 14px', fontSize: '0.85rem', outline: 'none', fontFamily: 'Orbitron, sans-serif', resize: 'vertical' }}
                 />
               </div>
 
               <motion.button type="submit" className="btn-neon-purple" style={{ alignSelf: 'flex-start' }} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                TRANSMIT REVIEW 📡
+                SUBMIT REVIEW
               </motion.button>
             </motion.form>
           )}
