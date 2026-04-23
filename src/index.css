@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void: #05050f;
-  --color-deep-space: #0d0d1f;
-  --color-panel: #0f0f24;
-  --color-neon-green: #39ff14;
-  --color-neon-purple: #bf00ff;
-  --color-neon-red: #ff0033;
-  --color-neon-blue: #00bfff;
+  --color-void: #0a0a0f;
+  --color-deep-space: #111116;
+  --color-panel: #16161e;
+  --color-neon-green: #1a5fff;
+  --color-neon-purple: #aa00ff;
+  --color-neon-red: #ff1a1a;
+  --color-neon-blue: #00d4ff;
   --font-orbitron: 'Orbitron', sans-serif;
   --font-pixel: "'Press Start 2P'", monospace;
 }
@@ -15,19 +15,25 @@
 @layer base {
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html {
-    background-color: #03000e;
+    background-color: #0a0a0f;
     background-image:
-      radial-gradient(ellipse 55% 30% at 22% 38%, rgba(0, 0, 5, 0.82) 0%, rgba(0, 0, 4, 0.20) 60%, transparent 100%),
-      radial-gradient(ellipse 40% 25% at 58% 68%, rgba(0, 0, 5, 0.78) 0%, rgba(0, 0, 4, 0.18) 60%, transparent 100%),
-      radial-gradient(ellipse 30% 55% at 96% 50%, rgba(0, 0, 6, 0.70) 0%, rgba(0, 0, 4, 0.15) 60%, transparent 100%),
-      radial-gradient(ellipse 42% 38% at 68% 28%, rgba(155, 60, 255, 0.80) 0%, rgba(90, 15, 210, 0.48) 45%, transparent 85%),
-      radial-gradient(ellipse 50% 70% at 12% 75%, rgba(190, 15, 140, 0.62) 0%, rgba(130, 5, 95, 0.30) 55%, transparent 90%),
-      radial-gradient(ellipse 55% 40% at 90% 18%, rgba(25, 70, 220, 0.58) 0%, rgba(12, 35, 170, 0.28) 55%, transparent 90%),
-      radial-gradient(ellipse 70% 50% at 48% 44%, rgba(100, 40, 200, 0.45) 0%, rgba(55, 10, 150, 0.20) 58%, transparent 100%),
-      radial-gradient(ellipse 48% 42% at 80% 78%, rgba(155, 25, 175, 0.52) 0%, rgba(85, 5, 120, 0.24) 55%, transparent 90%),
-      radial-gradient(ellipse 80% 35% at 35% 95%, rgba(10, 20, 165, 0.55) 0%, rgba(5, 8, 110, 0.25) 58%, transparent 100%),
-      radial-gradient(ellipse 45% 55% at 18% 45%, rgba(110, 55, 195, 0.48) 0%, rgba(60, 18, 145, 0.20) 58%, transparent 100%),
-      radial-gradient(ellipse 100% 100% at 50% 50%, rgba(35, 0, 70, 0.80) 0%, rgba(8, 0, 22, 0.72) 68%, transparent 100%);
+      /* Dark voids */
+      radial-gradient(ellipse 55% 30% at 22% 38%, rgba(0, 0, 8, 0.85) 0%, rgba(0, 0, 5, 0.22) 60%, transparent 100%),
+      radial-gradient(ellipse 40% 25% at 58% 68%, rgba(0, 0, 8, 0.80) 0%, rgba(0, 0, 5, 0.18) 60%, transparent 100%),
+      /* Cobalt blue glow — upper right, like neon sign spill */
+      radial-gradient(ellipse 48% 40% at 78% 22%, rgba(26, 95, 255, 0.65) 0%, rgba(10, 50, 200, 0.32) 50%, transparent 88%),
+      /* Purple ceiling neon — upper left sweep */
+      radial-gradient(ellipse 55% 45% at 15% 30%, rgba(170, 0, 255, 0.60) 0%, rgba(100, 0, 200, 0.28) 52%, transparent 88%),
+      /* Cyan strip light — lower right */
+      radial-gradient(ellipse 50% 38% at 85% 72%, rgba(0, 212, 255, 0.52) 0%, rgba(0, 130, 220, 0.24) 52%, transparent 88%),
+      /* Deep red glow — lower left, arcade cabinet warmth */
+      radial-gradient(ellipse 45% 55% at 10% 78%, rgba(255, 26, 26, 0.42) 0%, rgba(180, 10, 10, 0.18) 55%, transparent 90%),
+      /* Wide cobalt-purple center fill */
+      radial-gradient(ellipse 72% 52% at 50% 48%, rgba(60, 20, 180, 0.38) 0%, rgba(20, 5, 100, 0.18) 60%, transparent 100%),
+      /* Cyan undertone — bottom edge */
+      radial-gradient(ellipse 80% 30% at 40% 96%, rgba(0, 180, 255, 0.40) 0%, rgba(0, 80, 180, 0.18) 58%, transparent 100%),
+      /* Deep base */
+      radial-gradient(ellipse 100% 100% at 50% 50%, rgba(15, 5, 40, 0.88) 0%, rgba(5, 5, 15, 0.80) 68%, transparent 100%);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: 100%;
@@ -42,16 +48,16 @@
 }
 
 /* Neon text */
-.neon-green  { color: #39ff14; text-shadow: 0 0 6px #39ff14, 0 0 14px #39ff14; }
-.neon-purple { color: #bf00ff; text-shadow: 0 0 6px #bf00ff, 0 0 14px #bf00ff; }
-.neon-red    { color: #ff0033; text-shadow: 0 0 6px #ff0033, 0 0 14px #ff0033; }
-.neon-blue   { color: #00bfff; text-shadow: 0 0 6px #00bfff, 0 0 14px #00bfff; }
+.neon-green  { color: #1a5fff; text-shadow: 0 0 6px #1a5fff, 0 0 14px #1a5fff; }
+.neon-purple { color: #aa00ff; text-shadow: 0 0 6px #aa00ff, 0 0 14px #aa00ff; }
+.neon-red    { color: #ff1a1a; text-shadow: 0 0 6px #ff1a1a, 0 0 14px #ff1a1a; }
+.neon-blue   { color: #00d4ff; text-shadow: 0 0 6px #00d4ff, 0 0 14px #00d4ff; }
 
 /* Neon borders */
-.border-neon-green  { border-color: #39ff14 !important; box-shadow: 0 0 8px #39ff14, inset 0 0 8px rgba(57,255,20,0.08); }
-.border-neon-purple { border-color: #bf00ff !important; box-shadow: 0 0 8px #bf00ff, inset 0 0 8px rgba(191,0,255,0.08); }
-.border-neon-red    { border-color: #ff0033 !important; box-shadow: 0 0 8px #ff0033, inset 0 0 8px rgba(255,0,51,0.08); }
-.border-neon-blue   { border-color: #00bfff !important; box-shadow: 0 0 8px #00bfff, inset 0 0 8px rgba(0,191,255,0.08); }
+.border-neon-green  { border-color: #1a5fff !important; box-shadow: 0 0 8px #1a5fff, inset 0 0 8px rgba(26,95,255,0.08); }
+.border-neon-purple { border-color: #aa00ff !important; box-shadow: 0 0 8px #aa00ff, inset 0 0 8px rgba(170,0,255,0.08); }
+.border-neon-red    { border-color: #ff1a1a !important; box-shadow: 0 0 8px #ff1a1a, inset 0 0 8px rgba(255,26,26,0.08); }
+.border-neon-blue   { border-color: #00d4ff !important; box-shadow: 0 0 8px #00d4ff, inset 0 0 8px rgba(0,212,255,0.08); }
 
 /* Theater marquee lights */
 @keyframes dot-blink {
@@ -76,7 +82,7 @@
   position: fixed;
   top: -4px; left: 0; right: 0;
   height: 4px;
-  background: rgba(57, 255, 20, 0.05);
+  background: rgba(26, 95, 255, 0.05);
   z-index: 9999;
   animation: scanline 8s linear infinite;
 }
@@ -111,8 +117,8 @@
 
 /* Hover neon green button */
 .btn-neon-green {
-  border: 2px solid #39ff14;
-  color: #39ff14;
+  border: 2px solid #1a5fff;
+  color: #1a5fff;
   background: transparent;
   font-family: 'Press Start 2P', monospace;
   font-size: 0.6rem;
@@ -122,9 +128,9 @@
   transition: background 0.2s, box-shadow 0.2s;
   text-decoration: none;
   display: inline-block;
-  box-shadow: 0 0 8px #39ff14;
+  box-shadow: 0 0 8px #1a5fff;
 }
-.btn-neon-green:hover { background: rgba(57,255,20,0.15); box-shadow: 0 0 18px #39ff14; }
+.btn-neon-green:hover { background: rgba(26,95,255,0.15); box-shadow: 0 0 18px #1a5fff; }
 
 .btn-neon-purple {
   border: 2px solid #bf00ff;
@@ -161,7 +167,7 @@
 /* Section divider */
 .section-divider {
   border: none;
-  border-top: 1px solid rgba(57,255,20,0.2);
+  border-top: 1px solid rgba(26,95,255,0.2);
   margin: 0;
 }
 

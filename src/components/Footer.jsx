@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { config } from '../siteConfig'
 
-const DOT_COLORS = ['#00bfff', '#bf00ff', '#ff0033', '#39ff14']
+const DOT_COLORS = ['#00d4ff', '#aa00ff', '#ff1a1a', '#1a5fff']
 
 function MarqueeLights() {
   return (
@@ -27,7 +27,7 @@ function MarqueeLights() {
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'rgba(3,0,18,0.97)', borderTop: '1px solid rgba(57,255,20,0.2)', marginTop: 'auto' }}>
+    <footer style={{ background: 'rgba(3,0,18,0.97)', borderTop: '1px solid rgba(26,95,255,0.2)', marginTop: 'auto' }}>
       <MarqueeLights />
 
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 32 }}>
@@ -47,7 +47,7 @@ export default function Footer() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {config.nav.map(({ to, label }) => (
               <Link key={to} to={to} style={{ color: '#888', fontSize: '0.75rem', textDecoration: 'none' }}
-                onMouseEnter={e => e.target.style.color = '#39ff14'}
+                onMouseEnter={e => e.target.style.color = '#1a5fff'}
                 onMouseLeave={e => e.target.style.color = '#888'}
               >
                 {label}

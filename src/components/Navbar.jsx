@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { config } from '../siteConfig'
 
-const DOT_COLORS = ['#39ff14', '#bf00ff', '#ff0033', '#00bfff']
+const DOT_COLORS = ['#1a5fff', '#aa00ff', '#ff1a1a', '#00d4ff']
 
 function MarqueeLights() {
   return (
@@ -36,7 +36,7 @@ export default function Navbar() {
         zIndex: 100,
         background: 'rgba(4,0,22,0.92)',
         backdropFilter: 'blur(8px)',
-        borderBottom: '1px solid rgba(57,255,20,0.3)',
+        borderBottom: '1px solid rgba(26,95,255,0.3)',
       }}
     >
       <MarqueeLights />
@@ -83,7 +83,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div style={{ background: 'rgba(4,0,22,0.97)', padding: '16px 24px 20px', display: 'flex', flexDirection: 'column', gap: 20, borderTop: '1px solid rgba(57,255,20,0.2)' }}>
+        <div style={{ background: 'rgba(4,0,22,0.97)', padding: '16px 24px 20px', display: 'flex', flexDirection: 'column', gap: 20, borderTop: '1px solid rgba(26,95,255,0.2)' }}>
           {config.nav.map(({ to, label }) => (
             <NavLink
               key={to}
