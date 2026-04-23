@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate } from 'framer-motion'
 
-const RIM_COLORS   = ['#39ff14', '#bf00ff', '#ff0033', '#00bfff', '#39ff14', '#bf00ff', '#ff0033']
-const TRAIL_COLORS = ['#39ff14', '#bf00ff', '#ff0033', '#00bfff']
+const RIM_COLORS   = ['#ff1a1a', '#c8c8d8', '#ff1a1a', '#00d4ff', '#ff1a1a', '#1a5fff', '#ff1a1a']
+const TRAIL_COLORS = ['#ff1a1a', '#1a5fff', '#ff1a1a', '#00d4ff']
 
 export default function UFO() {
   const [beamOn, setBeamOn]     = useState(false)
@@ -120,9 +120,9 @@ export default function UFO() {
             height: 30,
             borderRadius: '50% 50% 0 0',
             background:
-              'radial-gradient(ellipse at 38% 28%, rgba(210,255,230,0.95) 0%, rgba(0,220,130,0.65) 45%, rgba(0,70,45,0.5) 100%)',
-            border: '1px solid rgba(57,255,20,0.5)',
-            boxShadow: '0 0 14px rgba(57,255,20,0.55)',
+              'radial-gradient(ellipse at 38% 28%, rgba(255,220,210,0.95) 0%, rgba(220,50,30,0.65) 45%, rgba(100,10,5,0.5) 100%)',
+            border: '1px solid rgba(255,26,26,0.5)',
+            boxShadow: '0 0 14px rgba(255,26,26,0.55)',
             position: 'relative',
             zIndex: 2,
           }}
@@ -137,7 +137,7 @@ export default function UFO() {
             background:
               'radial-gradient(ellipse at 50% 18%, #e8e8e8 0%, #aaa 30%, #555 70%, #222 100%)',
             boxShadow:
-              '0 0 20px rgba(57,255,20,0.3), inset 0 2px 4px rgba(255,255,255,0.12), 0 8px 18px rgba(0,0,0,0.75)',
+              '0 0 20px rgba(255,26,26,0.3), inset 0 2px 4px rgba(255,255,255,0.12), 0 8px 18px rgba(0,0,0,0.75)',
             marginTop: -12,
             position: 'relative',
             zIndex: 1,
@@ -182,7 +182,7 @@ export default function UFO() {
             width: 60,
             height: 10,
             borderRadius: '50%',
-            background: 'radial-gradient(ellipse, rgba(57,255,20,0.7) 0%, rgba(0,191,255,0.3) 60%, transparent 100%)',
+            background: 'radial-gradient(ellipse, rgba(255,26,26,0.7) 0%, rgba(0,212,255,0.3) 60%, transparent 100%)',
             filter: 'blur(3px)',
             marginTop: -4,
           }}
@@ -207,7 +207,7 @@ export default function UFO() {
                 width: 140,
                 height: 200,
                 background:
-                  'linear-gradient(to bottom, rgba(57,255,20,0.8) 0%, rgba(57,255,20,0.38) 55%, rgba(57,255,20,0) 100%)',
+                  'linear-gradient(to bottom, rgba(255,26,26,0.8) 0%, rgba(255,26,26,0.38) 55%, rgba(255,26,26,0) 100%)',
                 clipPath: 'polygon(33% 0%, 67% 0%, 100% 100%, 0% 100%)',
                 filter: 'blur(5px)',
                 marginTop: -6,
